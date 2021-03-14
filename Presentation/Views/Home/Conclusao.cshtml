@@ -1,0 +1,36 @@
+﻿@model Presentation.Models.JogadorViewModel
+
+@{
+    ViewData["Title"] = "Conclusao";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Conclusao</h1>
+
+<div>
+    <h4>Conclusao da Jogada</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Jogada)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Jogada)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
