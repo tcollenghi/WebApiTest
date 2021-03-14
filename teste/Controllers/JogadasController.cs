@@ -9,11 +9,10 @@ namespace Api.Controllers
 {
     public class JogadasController : Controller
     {
-        [HttpGet("/api/taxaJuros")]
-        public string GetTaxaJuros()
+        [HttpGet("/api/Hello")]
+        public IActionResult SayHello()
         {
-            //return db.Config.Where(p => p.ConfigKey == "TaxaJuros").FirstOrDefault().Value;
-            return string.Empty;
+            return Ok("Hello");
         }
 
         [HttpGet("/api/Jogadas")]
