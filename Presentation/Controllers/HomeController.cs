@@ -6,7 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Repository.Models;
+using Newtonsoft.Json;
 
 namespace Presentation.Controllers
 {
@@ -35,15 +38,25 @@ namespace Presentation.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        [HttpGet]
-        public IActionResult Jogar()
+        [HttpPost]
+        public IActionResult Jogar(JogadorViewModel model)
         {
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Jogar(JogadorViewModel model)
+        [HttpGet]
+        public async Task<IActionResult> Jogar()
         {
+            List<SelectListItem> listaJogadas = new List<SelectListItem>();
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync("https://localhost:44387/api/Jogadas"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    listaJogadas = JsonConvert.DeserializeObject<List<SelectListItem>>(apiResponse);
+                }
+            }
+            ViewBag.ListaJogadas = listaJogadas;
             return View();
         }
     }

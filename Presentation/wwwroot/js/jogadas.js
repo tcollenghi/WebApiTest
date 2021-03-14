@@ -26,14 +26,13 @@
     function getJogadas() {
         $.ajax({
             type: 'GET',
-            url: '"/api/Print/GetHash"', // call json method
+            url: "https://localhost:44387/api/Jogadas",
             dataType: 'json',
             data: {
-                pidpiece: $("#idpiece").val()
             },
-            success: function (listasubpieces) {
-                $.each(listasubpieces, function (i, listasubpieces) {
-                    $("#idsubpiece").append('<option value="' + listasubpieces.Value + '">' +
+            success: function (listaJogadas) {
+                $.each(listaJogadas, function (i, listaJogadas) {
+                    $("#idsubpiece").append('<option value="' + listaJogadas.Value + '">' +
                         listasubpieces.Text + '</option>');
                     i = i + 1;
                 });
