@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-center-radar.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 </head>
 <body>
     <header>
@@ -31,7 +32,14 @@
             </div>
         </nav>
     </header>
+
     <div class="container">
+        <div class="container">
+            @*<input type="text"  />*@
+            <div id="message" name="message" class="card"></div>
+            <ul id="discussion"></ul>
+            <div id="sendmessage" name="sendmessage" class="card"></div>
+        </div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -46,6 +54,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="~/js/signalr.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <!--Add script to update the page and send messages.-->
@@ -88,6 +97,34 @@
                     console.error(error.message);
                 });
         });
+    </script>
+    <script src="~/js/messageHub.js"></script>
+    <script>
+        $(document).ready(function () {
+            //showToast();
+        });
+        var i = 0;
+        var toasts = [
+            new Toast('success', 'toast-top-right', 'Bem Vindo'),
+        ];
+        toastr.options.positionClass = "toast-top-full-width";
+        toastr.options.extendedTimeOut = 100; //1000;
+        toastr.options.timeOut = 1000;
+        toastr.options.fadeOut = 255;
+        toastr.options.fadeIn = 255;
+
+        function showToast() {
+            var t = toasts[i];
+            toastr.options.positionClass = t.css;
+            toastr[t.type](t.msg);
+            i++;
+        };
+
+        function Toast(type, css, msg) {
+            this.type = type;
+            this.css = css;
+            this.msg = msg;
+        };
     </script>
 </body>
 </html>
