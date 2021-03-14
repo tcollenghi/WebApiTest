@@ -8,9 +8,5 @@ namespace teste.Controllers
 {
     public class JogadoresController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
     }
 }
