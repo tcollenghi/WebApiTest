@@ -8,14 +8,14 @@ namespace Presentation.Models
 {
     public class JogadorViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Informe seu nome")]
         public string Nome { get; set; }
 
+        [Required(ErrorMessage = "Informe um endereço de email válido.")]
         [DataType(DataType.EmailAddress, ErrorMessage = "Informe um endereço de email válido.")]
-        [Required]
         public string email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Informe sua jogada")]
         public int Jogada { get; set; }
     }
 }
