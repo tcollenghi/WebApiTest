@@ -54,19 +54,23 @@ namespace Presentation.Controllers
             }
             else
             {
-                listaJogadas = await getOpcoesJogada(listaJogadas);
-                ViewBag.ListaJogadas = listaJogadas;
+                await getJogadas();
                 ViewBag.Error = "Jogada inválida";
                 return View(model);
             }
+        }
+
+        private async Task getJogadas()
+        {
+            listaJogadas = await getOpcoesJogada(listaJogadas);
+            ViewBag.ListaJogadas = listaJogadas;
         }
 
         [HttpGet]
         public async Task<IActionResult> Jogar()
         {
             ViewBag.Error = string.Empty;
-            listaJogadas = await getOpcoesJogada(listaJogadas);
-            ViewBag.ListaJogadas = listaJogadas;
+            await getJogadas();
             return View();
         }
 
