@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,15 @@ namespace Api.Controllers
         [HttpGet("/api/Jogadas")]
         public IActionResult GetJogadas()
         {
-            return Ok(JogadasServices.GetJogadas());
+            return Ok(GetJogadasList());
+        }
+
+        private List<SelectListItem> GetJogadasList()
+        {
+            List<SelectListItem> listaCombo = new List<SelectListItem>();
+            JogadasServices.GetJogadas().ForEach(t => listaCombo.Add(new SelectListItem() { Text = t.Jogada, Value = t.id.ToString() }));
+            listaCombo.Insert(0, new SelectListItem() { Text = "Selecione", Value = "0" });
+            return listaCombo;
         }
     }
 }
