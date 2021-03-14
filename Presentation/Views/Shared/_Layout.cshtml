@@ -45,7 +45,49 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha512-2cbsQGdowNDPcKuoBd2bCcsJky87Mv0LEtD/nunJUgk6MOYTgVMGihS/xCEghNf04DPhNiJ4DZw5BxDd1uyOdw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script>
+    <script src="~/js/signalr.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <!--Add script to update the page and send messages.-->
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+
+            var messageInput = document.getElementById('message');
+
+            // Start the connection.
+            var connection = new signalR.HubConnectionBuilder()
+                .withUrl('/message')
+                .build();
+
+            // Create a function that the hub can call to broadcast messages.
+            connection.on('broadcastMessage', function (name, message) {
+                // Html encode display name and message.
+                var encodedName = name;
+                var encodedMsg = message;
+                // Add the message to the page.
+                var liElement = document.createElement('li');
+                liElement.innerHTML = '<strong>' + encodedName + '</strong>:&nbsp;&nbsp;' + encodedMsg;
+                document.getElementById('discussion').appendChild(liElement);
+            });
+
+            // Transport fallback functionality is now built into start.
+            connection.start()
+                .then(function () {
+                    console.log('connection started');
+                    document.getElementById('sendmessage').addEventListener('click', function (event) {
+                        // Call the Send method on the hub.
+                        connection.invoke('send', name, messageInput.value);
+
+                        // Clear text box and reset focus for next comment.
+                        messageInput.value = '';
+                        messageInput.focus();
+                        event.preventDefault();
+                    });
+                })
+                .catch(error => {
+                    console.error(error.message);
+                });
+        });
+    </script>
 </body>
 </html>
