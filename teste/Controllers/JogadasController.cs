@@ -19,7 +19,7 @@ namespace Api.Controllers
         [HttpGet("/api/Jogadas")]
         public IActionResult GetJogadas()
         {
-            return Json(JogadasServices.GetJogadas());
+            return Ok(JogadasServices.GetJogadas());
         }
     }
 }
