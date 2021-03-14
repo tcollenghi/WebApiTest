@@ -16,6 +16,7 @@ namespace Presentation.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private List<SelectListItem> listaJogadas = new List<SelectListItem>();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -34,7 +35,7 @@ namespace Presentation.Controllers
 
         public IActionResult Conclusao(JogadorViewModel model)
         {
-            return View();
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -44,25 +45,33 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public IActionResult Jogar(JogadorViewModel model)
+        public async Task<IActionResult> Jogar(JogadorViewModel model)
         {
             ViewBag.Error = string.Empty;
             if (model.Jogada > 0)
             {
-                RedirectToAction("Conclusao", "Home", model);
+                return RedirectToAction("Conclusao", "Home", model);
             }
             else
             {
+                listaJogadas = await getOpcoesJogada(listaJogadas);
+                ViewBag.ListaJogadas = listaJogadas;
                 ViewBag.Error = "Jogada inválida";
                 return View(model);
             }
-            return View();
         }
 
         [HttpGet]
         public async Task<IActionResult> Jogar()
         {
-            List<SelectListItem> listaJogadas = new List<SelectListItem>();
+            ViewBag.Error = string.Empty;
+            listaJogadas = await getOpcoesJogada(listaJogadas);
+            ViewBag.ListaJogadas = listaJogadas;
+            return View();
+        }
+
+        private static async Task<List<SelectListItem>> getOpcoesJogada(List<SelectListItem> listaJogadas)
+        {
             using (var httpClient = new HttpClient())
             {
                 using (var response = await httpClient.GetAsync("https://localhost:44387/api/Jogadas"))
@@ -71,8 +80,8 @@ namespace Presentation.Controllers
                     listaJogadas = JsonConvert.DeserializeObject<List<SelectListItem>>(apiResponse);
                 }
             }
-            ViewBag.ListaJogadas = listaJogadas;
-            return View();
+
+            return listaJogadas;
         }
     }
 }

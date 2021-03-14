@@ -9,6 +9,15 @@
 
 <hr />
 <div class="row">
+    <div class="col-sm-6">
+        @if (ViewBag.Error != null && !String.IsNullOrWhiteSpace(ViewBag.Error))
+        {
+            <label class="text-danger">@ViewBag.Error.ToString()</label>
+        }
+    </div>
+</div>
+
+<div class="row">
     <div class="col-md-4">
         <form asp-action="Jogar">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
