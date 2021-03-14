@@ -34,3 +34,71 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script type="text/javascript">
+    var nome = document.getElementById('Nome');
+    var jogada = document.getElementById('Jogada');
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        var messageInput = document.getElementById('message');
+
+        // Start the connection.
+        var connection = new signalR.HubConnectionBuilder()
+            .withUrl('/message')
+            .build();
+
+        // Create a function that the hub can call to broadcast messages.
+        connection.on('broadcastMessage', function (name, message) {
+            // Html encode display name and message.
+            var encodedName = name;
+            var encodedMsg = message;
+            // Add the message to the page.
+            var liElement = document.createElement('li');
+            liElement.innerHTML = '<strong>' + ' Jogador: ' + encodedName + '</strong>:&nbsp;&nbsp;já fez sua jogada';
+            document.getElementById('discussion').appendChild(liElement);
+            showToast('Jogador: ' + encodedName + ' fez sua jogada');
+        });
+
+        // Transport fallback functionality is now built into start.
+        connection.start()
+            .then(function () {
+                console.log('connection started');
+                document.getElementById('sendmessage').addEventListener('click', function (event) {
+                    // Call the Send method on the hub.
+                    connection.invoke('send', Nome, jogada);
+
+                    // Clear text box and reset focus for next comment.
+                    //messageInput.value = '';
+                    //messageInput.focus();
+                    //event.preventDefault();
+                });
+            })
+            .catch(error => {
+                console.error(error.message);
+            });
+    });
+
+    var i = 0;
+    var toasts = [
+        new Toast('success', 'toast-top-right', ' '),
+    ];
+    toastr.options.positionClass = "toast-top-full-width";
+    toastr.options.extendedTimeOut = 100; //1000;
+    toastr.options.timeOut = 1000;
+    toastr.options.fadeOut = 255;
+    toastr.options.fadeIn = 255;
+
+    function showToast(mensagem) {
+        var t = toasts[i];
+        toastr.options.positionClass = t.css;
+        toastr[t.type](t.msg + mensagem);
+        i++;
+    };
+
+    function Toast(type, css, msg) {
+        this.type = type;
+        this.css = css;
+        this.msg = msg;
+    };
+</script>

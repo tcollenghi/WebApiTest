@@ -97,15 +97,13 @@
                     console.error(error.message);
                 });
         });
-    </script>
-    <script src="~/js/messageHub.js"></script>
-    <script>
+
         $(document).ready(function () {
             //showToast();
         });
         var i = 0;
         var toasts = [
-            new Toast('success', 'toast-top-right', 'Bem Vindo'),
+            new Toast('success', 'toast-top-right', ' '),
         ];
         toastr.options.positionClass = "toast-top-full-width";
         toastr.options.extendedTimeOut = 100; //1000;
@@ -113,10 +111,10 @@
         toastr.options.fadeOut = 255;
         toastr.options.fadeIn = 255;
 
-        function showToast() {
+        function showToast(mensagem) {
             var t = toasts[i];
             toastr.options.positionClass = t.css;
-            toastr[t.type](t.msg);
+            toastr[t.type](t.msg + mensagem);
             i++;
         };
 

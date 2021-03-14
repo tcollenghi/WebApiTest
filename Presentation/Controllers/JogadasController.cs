@@ -13,5 +13,10 @@ namespace Presentation.Controllers
         {
             return View();
         }
+
+        public IActionResult PostJogada()
+        {
+            return View();
+        }
     }
 }
