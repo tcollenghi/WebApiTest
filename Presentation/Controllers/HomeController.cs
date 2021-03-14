@@ -32,6 +32,11 @@ namespace Presentation.Controllers
             return View();
         }
 
+        public IActionResult Conclusao(JogadorViewModel model)
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -41,6 +46,16 @@ namespace Presentation.Controllers
         [HttpPost]
         public IActionResult Jogar(JogadorViewModel model)
         {
+            ViewBag.Error = string.Empty;
+            if (model.Jogada > 0)
+            {
+                RedirectToAction("Conclusao", "Home", model);
+            }
+            else
+            {
+                ViewBag.Error = "Jogada inválida";
+                return View(model);
+            }
             return View();
         }
 
