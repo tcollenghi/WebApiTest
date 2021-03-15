@@ -1,4 +1,5 @@
 ﻿using Api.Resources;
+using Business;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Services;
@@ -25,8 +26,9 @@ namespace Api.Controllers
         [HttpPost("/api/SetJogadas")]
         public IActionResult SetJogada([FromBody] JogadaResource resource)
         {
-            //GameResult result = new GameResult();
-            return Ok(GetJogadasList());
+            GameResult result = new GameResult();
+            var vencedor = result.DeterminaVencedor();
+            return Ok(vencedor);
         }
 
         private List<SelectListItem> GetJogadasList()

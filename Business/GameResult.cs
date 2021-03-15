@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repository.Models;
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,17 +8,49 @@ namespace Business
 {
     public class GameResult
     {
-        public int NumeroJogadas { get; set; }
+        public GameResult()
+        {
+            jogadas = new List<JogadasModel>();
+        }
+
+        public List<JogadasModel> jogadas { get; set; }
 
         public string DeterminaVencedor()
         {
-            if (NumeroJogadas == 3)
+            var result = new List<JogadasModel>();
+            if (jogadas.Count == 3)
             {
-                return "Nenhum vencedor ainda";
+                if (jogadas.Where(p => p.Jogada.ToUpper() == "PEDRA" &&
+                                       p.Jogada.ToUpper() == "TESOURA" &&
+                                       p.Jogada.ToUpper() == "PAPEL").ToList().Count == 3)
+
+                    return "Empate";
+                else
+                {
+                    if (jogadas.Where(p => p.Jogada.ToUpper() == "PEDRA" &&
+                                           p.Jogada.ToUpper() == "TESOURA" &&
+                                           p.Jogada.ToUpper() != "PAPEL").ToList().Count == 3)
+                    {
+                        return "Tesoura";
+                    }
+                    else
+                    {
+                        if (jogadas.Where(p => p.Jogada.ToUpper() == "PEDRA" &&
+                                               p.Jogada.ToUpper() != "TESOURA" &&
+                                               p.Jogada.ToUpper() == "PAPEL").ToList().Count == 3)
+                        {
+                            return "Papel";
+                        }
+                        else
+                        {
+                            return "Tesoura";
+                        }
+                    }
+                }
             }
             else
             {
-                return "Nenhum vencedor ainda";
+                return "Empate";
             }
         }
     }
