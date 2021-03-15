@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Api.Resources;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,6 +18,12 @@ namespace Api.Controllers
 
         [HttpGet("/api/Jogadas")]
         public IActionResult GetJogadas()
+        {
+            return Ok(GetJogadasList());
+        }
+
+        [HttpPost("/api/SetJogadas")]
+        public IActionResult SetJogada(JogadaResource resource)
         {
             return Ok(GetJogadasList());
         }
