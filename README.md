@@ -24,4 +24,6 @@ Observação
 documentação, conhecimento de arquiteturas, padrões de programação e boas
 práticas. Faça disso uma oportunidade pra mostrar todo o seu conhecimento.
 
+Pra deixar um pouco mais complicado coloquei "papel" como variável!
+
 
