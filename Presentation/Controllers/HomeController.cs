@@ -10,6 +10,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Repository.Models;
 using Newtonsoft.Json;
+using System.Text;
+using System.Net.Http.Headers;
 
 namespace Presentation.Controllers
 {
@@ -17,6 +19,26 @@ namespace Presentation.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private List<SelectListItem> listaJogadas = new List<SelectListItem>();
+
+        private static async Task<List<SelectListItem>> getOpcoesJogada(List<SelectListItem> listaJogadas)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync("https://localhost:44387/api/Jogadas"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    listaJogadas = JsonConvert.DeserializeObject<List<SelectListItem>>(apiResponse);
+                }
+            }
+
+            return listaJogadas;
+        }
+
+        private async Task getJogadas()
+        {
+            listaJogadas = await getOpcoesJogada(listaJogadas);
+            ViewBag.ListaJogadas = listaJogadas;
+        }
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -33,15 +55,33 @@ namespace Presentation.Controllers
             return View();
         }
 
-        public IActionResult Conclusao(JogadorViewModel model)
+        public async Task<IActionResult> Conclusao(JogadorViewModel model)
         {
+            var message = JsonConvert.SerializeObject(new
+            {
+                Nome = model.Nome,
+                email = model.email,
+                jogada = model.Jogada.ToString()
+            });
+
+            var jsonContent = message;
+            var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+            contentString.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            using (var httpClient = new HttpClient())
+            {
+                var response = await httpClient.PostAsync("https://localhost:44387/api/SetJogada", contentString);
+            }
+
             return View(model);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpGet]
+        public async Task<IActionResult> Jogar()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            ViewBag.Error = string.Empty;
+            await getJogadas();
+            return View();
         }
 
         [HttpPost]
@@ -60,32 +100,10 @@ namespace Presentation.Controllers
             }
         }
 
-        private async Task getJogadas()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
         {
-            listaJogadas = await getOpcoesJogada(listaJogadas);
-            ViewBag.ListaJogadas = listaJogadas;
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Jogar()
-        {
-            ViewBag.Error = string.Empty;
-            await getJogadas();
-            return View();
-        }
-
-        private static async Task<List<SelectListItem>> getOpcoesJogada(List<SelectListItem> listaJogadas)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                using (var response = await httpClient.GetAsync("https://localhost:44387/api/Jogadas"))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    listaJogadas = JsonConvert.DeserializeObject<List<SelectListItem>>(apiResponse);
-                }
-            }
-
-            return listaJogadas;
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

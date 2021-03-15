@@ -23,8 +23,9 @@ namespace Api.Controllers
         }
 
         [HttpPost("/api/SetJogadas")]
-        public IActionResult SetJogada(JogadaResource resource)
+        public IActionResult SetJogada([FromBody] JogadaResource resource)
         {
+            //GameResult result = new GameResult();
             return Ok(GetJogadasList());
         }
 
@@ -32,8 +33,9 @@ namespace Api.Controllers
         {
             List<SelectListItem> listaCombo = new List<SelectListItem>();
             JogadasServices.GetJogadas().ForEach(t => listaCombo.Add(new SelectListItem() { Text = t.Jogada, Value = t.id.ToString() }));
-            listaCombo.Insert(0, new SelectListItem() { Text = "Selecione", Value = "0" });
+            listaCombo.Insert(0, new SelectListItem() { Text = "Selecione", Value = "0"});
+
             return listaCombo;
         }
-    }
+}
 }

@@ -27,6 +27,10 @@ namespace Repository.Models
         [Required, StringLength(100)]
         public String Jogada { get; set; }
 
+        [Display(Name = "Jogador")]
+        [StringLength(100)]
+        public String Jogador { get; set; }
+
         #endregion Instance Properties
     }
 }
