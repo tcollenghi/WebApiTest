@@ -26,4 +26,6 @@ práticas. Faça disso uma oportunidade pra mostrar todo o seu conhecimento.
 
 Pra deixar um pouco mais complicado coloquei "papel" como variável!
 
+O Projeto esta organizado da seguinte forma 
+
 
