@@ -26,6 +26,18 @@ práticas. Faça disso uma oportunidade pra mostrar todo o seu conhecimento.
 
 Pra deixar um pouco mais complicado coloquei "papel" como variável!
 
-O Projeto esta organizado da seguinte forma 
+O Projeto esta organizado da seguinte forma: 
+1 - API - obviamente é a API por si só. (isolada e com Swagger)
+
+2 - Business - Principal regra de negócio, nessa classe esta definida as regras e se houve empate ou algum vencedor.
+
+3 - Data - Camada para representar um modelo relacional, independente da base de dados
+
+4 - Presentation - Camada de apresentação, exercício de bootstrap, responsividade das telas e performance para carregar um site.
+
+5 - Services - Camada que server como DAO, porém com dados estaticos e informações em hardcode, podendo ser substituida por uma camada DAL, ou permanecer como services, dependendo da arquitetura do projeto
+
+
+
 
 
