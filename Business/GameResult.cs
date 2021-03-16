@@ -8,6 +8,12 @@ namespace Business
 {
     public class GameResult
     {
+        private const int numeroJogadas = 3;
+        private const string pedra = "PEDRA";
+        private const string tesoura = "TESOURA";
+        private const string papel = "PAPEL";
+        private const string empate = "Empate";
+
         public GameResult()
         {
             Jogadas = new List<JogadasModel>();
@@ -18,39 +24,39 @@ namespace Business
         public string DeterminaVencedor()
         {
             var result = new List<JogadasModel>();
-            if (Jogadas.Count == 3)
+            if (Jogadas.Count == numeroJogadas)
             {
-                if (Jogadas.Where(p => p.Jogada.ToUpper() == "PEDRA" &&
-                                       p.Jogada.ToUpper() == "TESOURA" &&
-                                       p.Jogada.ToUpper() == "PAPEL").ToList().Count == 3)
+                if (Jogadas.Where(p => p.Jogada.ToUpper() == pedra &&
+                                       p.Jogada.ToUpper() == tesoura &&
+                                       p.Jogada.ToUpper() == papel).ToList().Count == numeroJogadas)
 
-                    return "Empate";
+                    return empate;
                 else
                 {
-                    if (Jogadas.Where(p => p.Jogada.ToUpper() == "PEDRA" &&
-                                           p.Jogada.ToUpper() == "TESOURA" &&
-                                           p.Jogada.ToUpper() != "PAPEL").ToList().Count == 3)
+                    if (Jogadas.Where(p => p.Jogada.ToUpper() == pedra &&
+                                           p.Jogada.ToUpper() == tesoura &&
+                                           p.Jogada.ToUpper() != papel).ToList().Count == numeroJogadas)
                     {
-                        return "Tesoura";
+                        return tesoura;
                     }
                     else
                     {
-                        if (Jogadas.Where(p => p.Jogada.ToUpper() == "PEDRA" &&
-                                               p.Jogada.ToUpper() != "TESOURA" &&
-                                               p.Jogada.ToUpper() == "PAPEL").ToList().Count == 3)
+                        if (Jogadas.Where(p => p.Jogada.ToUpper() == pedra &&
+                                               p.Jogada.ToUpper() != tesoura &&
+                                               p.Jogada.ToUpper() == papel).ToList().Count == numeroJogadas)
                         {
-                            return "Papel";
+                            return papel;
                         }
                         else
                         {
-                            return "Tesoura";
+                            return tesoura;
                         }
                     }
                 }
             }
             else
             {
-                return "Empate";
+                return empate;
             }
         }
     }
