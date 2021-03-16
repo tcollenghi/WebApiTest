@@ -27,6 +27,7 @@ práticas. Faça disso uma oportunidade pra mostrar todo o seu conhecimento.
 Pra deixar um pouco mais complicado coloquei "papel" como variável!
 
 O Projeto esta organizado da seguinte forma: 
+
 1 - API - obviamente é a API por si só. (isolada e com Swagger)
 
 2 - Business - Principal regra de negócio, nessa classe esta definida as regras e se houve empate ou algum vencedor.
