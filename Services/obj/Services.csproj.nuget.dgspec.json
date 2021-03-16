@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\_TestWebApi\\WebApiTest\\Services\\Services.csproj": {}
+    "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Services\\Services.csproj": {}
   },
   "projects": {
-    "C:\\_TestWebApi\\WebApiTest\\Data\\Repository.csproj": {
+    "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Data\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\_TestWebApi\\WebApiTest\\Data\\Repository.csproj",
-        "projectName": "Repository",
-        "projectPath": "C:\\_TestWebApi\\WebApiTest\\Data\\Repository.csproj",
+        "projectUniqueName": "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Data\\Model.csproj",
+        "projectName": "Model",
+        "projectPath": "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Data\\Model.csproj",
         "packagesPath": "C:\\Users\\tulio\\.nuget\\packages\\",
-        "outputPath": "C:\\_TestWebApi\\WebApiTest\\Data\\obj\\",
+        "outputPath": "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -65,14 +65,14 @@
         }
       }
     },
-    "C:\\_TestWebApi\\WebApiTest\\Services\\Services.csproj": {
+    "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\_TestWebApi\\WebApiTest\\Services\\Services.csproj",
+        "projectUniqueName": "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "C:\\_TestWebApi\\WebApiTest\\Services\\Services.csproj",
+        "projectPath": "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Services\\Services.csproj",
         "packagesPath": "C:\\Users\\tulio\\.nuget\\packages\\",
-        "outputPath": "C:\\_TestWebApi\\WebApiTest\\Services\\obj\\",
+        "outputPath": "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -96,8 +96,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\_TestWebApi\\WebApiTest\\Data\\Repository.csproj": {
-                "projectPath": "C:\\_TestWebApi\\WebApiTest\\Data\\Repository.csproj"
+              "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Data\\Model.csproj": {
+                "projectPath": "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Data\\Model.csproj"
               }
             }
           }

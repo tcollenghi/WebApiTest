@@ -10,24 +10,24 @@ namespace Business
     {
         public GameResult()
         {
-            jogadas = new List<JogadasModel>();
+            Jogadas = new List<JogadasModel>();
         }
 
-        public List<JogadasModel> jogadas { get; set; }
+        public List<JogadasModel> Jogadas { get; set; }
 
         public string DeterminaVencedor()
         {
             var result = new List<JogadasModel>();
-            if (jogadas.Count == 3)
+            if (Jogadas.Count == 3)
             {
-                if (jogadas.Where(p => p.Jogada.ToUpper() == "PEDRA" &&
+                if (Jogadas.Where(p => p.Jogada.ToUpper() == "PEDRA" &&
                                        p.Jogada.ToUpper() == "TESOURA" &&
                                        p.Jogada.ToUpper() == "PAPEL").ToList().Count == 3)
 
                     return "Empate";
                 else
                 {
-                    if (jogadas.Where(p => p.Jogada.ToUpper() == "PEDRA" &&
+                    if (Jogadas.Where(p => p.Jogada.ToUpper() == "PEDRA" &&
                                            p.Jogada.ToUpper() == "TESOURA" &&
                                            p.Jogada.ToUpper() != "PAPEL").ToList().Count == 3)
                     {
@@ -35,7 +35,7 @@ namespace Business
                     }
                     else
                     {
-                        if (jogadas.Where(p => p.Jogada.ToUpper() == "PEDRA" &&
+                        if (Jogadas.Where(p => p.Jogada.ToUpper() == "PEDRA" &&
                                                p.Jogada.ToUpper() != "TESOURA" &&
                                                p.Jogada.ToUpper() == "PAPEL").ToList().Count == 3)
                         {

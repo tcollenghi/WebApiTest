@@ -2,28 +2,28 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "Repository/1.0.0": {
+      "Model/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "compile": {
-          "bin/placeholder/Repository.dll": {}
+          "bin/placeholder/Model.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Repository.dll": {}
+          "bin/placeholder/Model.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "Repository/1.0.0": {
+    "Model/1.0.0": {
       "type": "project",
-      "path": "../Data/Repository.csproj",
-      "msbuildProject": "../Data/Repository.csproj"
+      "path": "../Data/Model.csproj",
+      "msbuildProject": "../Data/Model.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Repository >= 1.0.0"
+      "Model >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -34,11 +34,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\_TestWebApi\\WebApiTest\\Services\\Services.csproj",
+      "projectUniqueName": "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Services\\Services.csproj",
       "projectName": "Services",
-      "projectPath": "C:\\_TestWebApi\\WebApiTest\\Services\\Services.csproj",
+      "projectPath": "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Services\\Services.csproj",
       "packagesPath": "C:\\Users\\tulio\\.nuget\\packages\\",
-      "outputPath": "C:\\_TestWebApi\\WebApiTest\\Services\\obj\\",
+      "outputPath": "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -62,8 +62,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\_TestWebApi\\WebApiTest\\Data\\Repository.csproj": {
-              "projectPath": "C:\\_TestWebApi\\WebApiTest\\Data\\Repository.csproj"
+            "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Data\\Model.csproj": {
+              "projectPath": "C:\\Users\\tulio\\Desktop\\taasg\\WebApiTest\\Data\\Model.csproj"
             }
           }
         }
