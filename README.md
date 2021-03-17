@@ -24,7 +24,7 @@ Observação
 documentação, conhecimento de arquiteturas, padrões de programação e boas
 práticas. Faça disso uma oportunidade pra mostrar todo o seu conhecimento.
 
-Pra deixar um pouco mais complicado coloquei "papel" como variável!
+Obs Esse projeto esta LONGE DO IDEAL, um pouco organizado apenas
 
 O Projeto esta organizado da seguinte forma: 
 
