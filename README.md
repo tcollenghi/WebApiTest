@@ -40,7 +40,7 @@ O Projeto esta organizado da seguinte forma:
 
 Para iniciar o projeto com a camada de apresentacao
 
-![alt text](https://github.com/jsTradeMark/WebApiTest/blob/Presentation/wwwroot/init.png?raw=true)
+![alt text](https://github.com/jsTradeMark/WebApiTest/blob/main/Presentation/wwwroot/init.png?raw=true)
 
 
 
