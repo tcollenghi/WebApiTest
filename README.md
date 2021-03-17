@@ -38,7 +38,9 @@ O Projeto esta organizado da seguinte forma:
 
 5 - Services - Camada que server como DAO, porém com dados estaticos e informações em hardcode, podendo ser substituida por uma camada DAL, ou permanecer como services, dependendo da arquitetura do projeto
 
+Para iniciar o projeto com a camada de apresentacao
 
+![alt text](https://github.com/jsTradeMark/WebApiTest/tree/main/Presentation/wwwroot/init.png?raw=true)
 
 
 
