@@ -49,7 +49,7 @@ namespace Api.Controllers
             {
                 var jogadaVencedora = gameResult.DeterminaVencedor();
                 var result = HttpContext.Session.GetString(jogadaVencedora);
-                return Ok(result);
+                return Ok(jogadaVencedora);
             }
             else
             {
