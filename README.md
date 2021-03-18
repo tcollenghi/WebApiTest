@@ -24,7 +24,7 @@ Observação
 documentação, conhecimento de arquiteturas, padrões de programação e boas
 práticas. Faça disso uma oportunidade pra mostrar todo o seu conhecimento.
 
-Pra deixar um pouco mais complicado coloquei "papel" como variável!
+Obs Esse projeto esta LONGE DO IDEAL, um pouco organizado apenas
 
 O Projeto esta organizado da seguinte forma: 
 
@@ -38,7 +38,9 @@ O Projeto esta organizado da seguinte forma:
 
 5 - Services - Camada que server como DAO, porém com dados estaticos e informações em hardcode, podendo ser substituida por uma camada DAL, ou permanecer como services, dependendo da arquitetura do projeto
 
+Para iniciar o projeto com a camada de apresentacao
 
+![alt text](https://github.com/jsTradeMark/WebApiTest/blob/main/Presentation/wwwroot/init.png?raw=true)
 
 
 
