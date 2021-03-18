@@ -1,0 +1,12 @@
+C:\Users\tulio\Desktop\taasg\WebApiTest\Business\bin\Debug\netcoreapp3.1\Business.deps.json
+C:\Users\tulio\Desktop\taasg\WebApiTest\Business\bin\Debug\netcoreapp3.1\Business.dll
+C:\Users\tulio\Desktop\taasg\WebApiTest\Business\bin\Debug\netcoreapp3.1\Business.pdb
+C:\Users\tulio\Desktop\taasg\WebApiTest\Business\bin\Debug\netcoreapp3.1\Model.dll
+C:\Users\tulio\Desktop\taasg\WebApiTest\Business\bin\Debug\netcoreapp3.1\Model.pdb
+C:\Users\tulio\Desktop\taasg\WebApiTest\Business\obj\Debug\netcoreapp3.1\Business.csprojAssemblyReference.cache
+C:\Users\tulio\Desktop\taasg\WebApiTest\Business\obj\Debug\netcoreapp3.1\Business.AssemblyInfoInputs.cache
+C:\Users\tulio\Desktop\taasg\WebApiTest\Business\obj\Debug\netcoreapp3.1\Business.AssemblyInfo.cs
+C:\Users\tulio\Desktop\taasg\WebApiTest\Business\obj\Debug\netcoreapp3.1\Business.csproj.CoreCompileInputs.cache
+C:\Users\tulio\Desktop\taasg\WebApiTest\Business\obj\Debug\netcoreapp3.1\Business.csproj.CopyComplete
+C:\Users\tulio\Desktop\taasg\WebApiTest\Business\obj\Debug\netcoreapp3.1\Business.dll
+C:\Users\tulio\Desktop\taasg\WebApiTest\Business\obj\Debug\netcoreapp3.1\Business.pdb

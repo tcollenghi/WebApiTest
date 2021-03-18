@@ -14,28 +14,34 @@ namespace Business
         private const string papel = "PAPEL";
         private const string empate = "Empate";
 
+        public List<JogadasModel> Jogadas { get; set; }
+
         public GameResult()
         {
             Jogadas = new List<JogadasModel>();
         }
 
-        public List<JogadasModel> Jogadas { get; set; }
+        public void AddJogada(string jogada, string nomeJogador, string email)
+        {
+            var jogadasModel = new JogadasModel(jogada, nomeJogador, email);
+            Jogadas.Add(jogadasModel);
+        }
 
         public string DeterminaVencedor()
         {
             var result = new List<JogadasModel>();
-            if (Jogadas.Count == numeroJogadas)
+            if (Jogadas.Count > 1)
             {
                 if (Jogadas.Where(p => p.Jogada.ToUpper() == pedra &&
                                        p.Jogada.ToUpper() == tesoura &&
-                                       p.Jogada.ToUpper() == papel).ToList().Count == numeroJogadas)
+                                       p.Jogada.ToUpper() == papel).ToList().Count > 0)
 
                     return empate;
                 else
                 {
                     if (Jogadas.Where(p => p.Jogada.ToUpper() == pedra &&
                                            p.Jogada.ToUpper() == tesoura &&
-                                           p.Jogada.ToUpper() != papel).ToList().Count == numeroJogadas)
+                                           p.Jogada.ToUpper() != papel).ToList().Count > 0)
                     {
                         return tesoura;
                     }
@@ -43,20 +49,20 @@ namespace Business
                     {
                         if (Jogadas.Where(p => p.Jogada.ToUpper() == pedra &&
                                                p.Jogada.ToUpper() != tesoura &&
-                                               p.Jogada.ToUpper() == papel).ToList().Count == numeroJogadas)
+                                               p.Jogada.ToUpper() == papel).ToList().Count > 0)
                         {
                             return papel;
                         }
                         else
                         {
-                            return tesoura;
+                            return pedra ;
                         }
                     }
                 }
             }
             else
             {
-                return empate;
+                return "Aguardando outros jogadores";
             }
         }
     }

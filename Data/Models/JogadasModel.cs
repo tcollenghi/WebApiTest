@@ -17,19 +17,30 @@ namespace Repository.Models
             this.Jogada = jogada;
         }
 
+        public JogadasModel(string jogada, string jogador, string email)
+        {
+            this.Jogada = jogada;
+            this.NomeJogador = jogador;
+            this.Email = email;
+        }
+
         #region Instance Properties
 
         [Display(Name = "id")]
         [Required]
-        public Int32 id { get; set; }
+        public int id { get; set; }
 
         [Display(Name = "Jogada")]
         [Required, StringLength(100)]
-        public String Jogada { get; set; }
+        public string Jogada { get; set; }
 
         [Display(Name = "Jogador")]
         [StringLength(100)]
-        public String Jogador { get; set; }
+        public string NomeJogador { get; set; }
+
+        [Display(Name = "email")]
+        [StringLength(50)]
+        public string Email { get; set; }
 
         #endregion Instance Properties
     }

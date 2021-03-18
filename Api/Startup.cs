@@ -27,6 +27,8 @@ namespace teste
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSession();
+            services.AddDistributedMemoryCache();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Jogadas", Version = "v1" });
@@ -39,10 +41,10 @@ namespace teste
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "teste v1"));
             }
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "teste v1"));
+            app.UseSession();
             app.UseHttpsRedirection();
 
             app.UseRouting();

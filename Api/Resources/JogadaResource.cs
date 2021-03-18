@@ -7,9 +7,20 @@ namespace Api.Resources
 {
     public class JogadaResource
     {
-        public string Nome { get; set; }
-        public string email { get; set; }
+        public JogadaResource()
+        {
+        }
 
-        public string jogada { get; set; }
+        public JogadaResource(string nome, string email, string jogada)
+        {
+            this.Nome = nome;
+            this.Email = email;
+            this.Jogada = jogada;
+        }
+
+        public string Nome { get; set; }
+        public string Email { get; set; }
+
+        public string Jogada { get; set; }
     }
 }
